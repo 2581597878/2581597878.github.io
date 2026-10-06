@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>庸禾文化传媒 · 公司简介 2026</title>
+<style>
+  :root{
+    --paper:#f6f2ea; --paper2:#efe8db; --ink:#211d18; --ink2:#4a443b;
+    --muted:#8b8274; --brand:#8c3a32; --brand-dark:#6f2c26; --bronze:#b1905c;
+    --line:#dcd3c2; --line2:#e7dfd0; --white:#fff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:"Microsoft YaHei","PingFang SC","Helvetica Neue",Arial,sans-serif;
+       background:var(--paper);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;font-size:14px;}
+  .serif{font-family:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong","SimSun",serif;}
+  .en{font-family:Georgia,"Times New Roman",serif;letter-spacing:.14em;}
+  img{display:block;width:100%;height:auto;}
+  .sheet{width:min(1200px,100%);margin:0 auto;padding:0 52px;}
+  section{position:relative;padding:62px 0 54px;}
+  a{color:inherit;text-decoration:none;}
+
+  .olabel{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;}
+  .olabel .num{font-size:13px;color:var(--brand);letter-spacing:.2em;}
+  .olabel h2{font-size:27px;font-weight:600;letter-spacing:.06em;}
+  .olabel .ensub{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.28em;margin-left:4px;}
+  .olabel::after{content:"";flex:1;height:1px;background:var(--line);margin-left:16px;align-self:center;}
+
+  /* ===== 封面 + 轮播 ===== */
+  .cover{min-height:100vh;padding:0;display:flex;flex-direction:column;}
+  .cover-top{padding:28px 52px 0;}
+  .cover-brand{display:flex;align-items:center;gap:16px;}
+  .cover-brand img.logo{height:46px;width:auto;}
+  .cover-brand .bname{font-size:21px;font-weight:700;letter-spacing:.26em;}
+  .cover-brand .ben{font-size:10px;color:var(--muted);letter-spacing:.3em;text-transform:uppercase;margin-top:1px;}
+  .cover-main{flex:1;display:flex;flex-direction:column;justify-content:center;padding:30px 52px;}
+  .hero{position:relative;height:62vh;min-height:400px;overflow:hidden;border-radius:4px;}
+  .hero .slides{display:flex;height:100%;transition:transform .7s ease;}
+  .hero .slide{position:relative;flex:0 0 100%;height:100%;}
+  .hero .slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .hero .slide::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(20,14,10,.82) 100%);}
+  .hero .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 36px;color:#fff;z-index:2;}
+  .hero .cap .htag{font-size:10px;letter-spacing:.32em;color:#e6d9c2;text-transform:uppercase;}
+  .hero .cap h1{font-size:33px;font-weight:700;letter-spacing:.08em;margin-top:6px;}
+  .hero .cap p{font-size:13px;color:#efe8dd;margin-top:4px;max-width:640px;}
+  .hero .dots{position:absolute;bottom:14px;right:36px;z-index:3;display:flex;gap:8px;}
+  .hero .dots span{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:.3s;}
+  .hero .dots span.on{background:var(--bronze);transform:scale(1.15);}
+  .hero .arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:38px;height:38px;
+    background:rgba(255,255,255,.14);border:none;border-radius:50%;color:#fff;font-size:18px;cursor:pointer;transition:.3s;}
+  .hero .arrow:hover{background:rgba(255,255,255,.3);}
+  .hero .arrow.prev{left:18px;}.hero .arrow.next{right:18px;}
+
+  .cover-slogan{margin-top:24px;text-align:center;}
+  .cover-slogan .c1{font-size:21px;letter-spacing:.28em;font-weight:600;}
+  .cover-slogan .c2{font-size:10px;color:var(--muted);letter-spacing:.2em;margin-top:6px;text-transform:uppercase;}
+  .cover-services{margin-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:0 30px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;}
+  .cover-services .sv{display:flex;flex-direction:column;gap:2px;padding:0 10px;}
+  .cover-services .sv + .sv{border-left:1px solid var(--line2);}
+  .cover-services .sv i{font-size:10px;color:var(--brand);letter-spacing:.18em;font-style:normal;text-transform:uppercase;}
+  .cover-services .sv b{font-size:14px;font-weight:600;letter-spacing:.06em;}
+  .cover-footer{padding:14px 52px 18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;}
+  .cover-footer .fc{font-size:12px;color:var(--ink2);letter-spacing:.04em;}
+  .cover-footer .fc b{color:var(--brand);font-weight:600;}
+  .cover-footer .scroll{font-size:10px;color:var(--muted);letter-spacing:.18em;}
+
+  /* ===== 公司简介 ===== */
+  .about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:42px;align-items:start;}
+  .about-text h3{font-size:18px;font-weight:600;letter-spacing:.1em;margin-bottom:14px;}
+  .about-text p{font-size:13.5px;color:var(--ink2);margin-bottom:11px;}
+  .about-text p em{font-style:normal;color:var(--brand);font-weight:600;}
+  .about-text .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+  .about-text .meta span{font-size:11px;padding:5px 12px;border:1px solid var(--line);border-radius:100px;color:var(--ink2);}
+  .about-media{position:relative;}
+  .about-media .cur{position:relative;height:290px;overflow:hidden;border-radius:4px;}
+  .about-media .cur img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .about-media .thumbs{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;}
+  .about-media .thumbs img{width:76px;height:54px;object-fit:cover;border-radius:3px;cursor:pointer;opacity:.7;border:2px solid transparent;transition:.25s;}
+  .about-media .thumbs img.on{opacity:1;border-color:var(--brand);}
+  .about-media figcaption{font-size:10px;color:var(--muted);margin-top:8px;letter-spacing:.06em;}
+  .pillars{margin-top:42px;}
+  .pillars .phead{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;}
+  .pillars .phead h3{font-size:17px;font-weight:600;letter-spacing:.1em;}
+  .pillars .phead span{font-size:10px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;}
+  .pillars-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .pillar{background:var(--white);border:1px solid var(--line2);border-top:2px solid var(--brand);padding:20px 18px;border-radius:2px;}
+  .pillar .pn{font-size:12px;color:var(--brand);font-weight:700;letter-spacing:.14em;}
+  .pillar h4{font-size:14px;font-weight:600;letter-spacing:.05em;margin:10px 0 6px;}
+  .pillar p{font-size:12px;color:var(--muted);line-height:1.55;}
+
+  /* ===== 业务能力 ===== */
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .svc{background:var(--white);border:1px solid var(--line2);overflow:hidden;transition:.25s;}
+  .svc:hover{box-shadow:0 14px 30px -18px rgba(33,29,24,.28);transform:translateY(-3px);}
+  .svc .im{position:relative;height:150px;overflow:hidden;}
+  .svc .im img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+  .svc:hover .im img{transform:scale(1.05);}
+  .svc .im::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(20,14,10,.42));}
+  .svc .im .sno{position:absolute;left:16px;bottom:12px;color:#fff;font-size:12px;letter-spacing:.16em;z-index:2;}
+  .svc .body{padding:17px 20px 21px;}
+  .svc h4{font-size:17px;font-weight:600;letter-spacing:.07em;}
+  .svc .sen{font-size:10px;color:var(--muted);letter-spacing:.18em;text-transform:uppercase;margin:2px 0 8px;}
+  .svc .bd{height:2px;width:30px;background:var(--brand);margin-bottom:10px;}
+  .svc p{font-size:12.5px;color:var(--ink2);line-height:1.6;}
+  .svc .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+  .svc .tags i{font-style:normal;font-size:11px;color:var(--ink2);background:var(--paper);padding:3px 9px;border-radius:100px;}
+
+  /* ===== 优秀案例 ===== */
+  .feat-hero{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;}
+  .fcard{position:relative;overflow:hidden;border-radius:4px;background:var(--ink);min-height:300px;cursor:pointer;}
+  .fcard img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+  .fcard:hover img{transform:scale(1.04);}
+  .fcard .cap{position:absolute;left:0;right:0;bottom:0;padding:24px;color:#fff;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(20,14,10,.82));}
+  .fcard .cap .ft{font-size:10px;letter-spacing:.26em;color:#e2d3b6;text-transform:uppercase;}
+  .fcard .cap h4{font-size:22px;font-weight:700;letter-spacing:.06em;margin:6px 0 4px;}
+  .fcard .cap p{font-size:12px;color:#efe8dd;max-width:520px;}
+  .fcard .cap .more{display:inline-block;margin-top:10px;font-size:11px;color:var(--bronze);letter-spacing:.14em;}
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .ftile{position:relative;overflow:hidden;border-radius:4px;min-height:200px;background:var(--ink);cursor:pointer;}
+  .ftile img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+  .ftile:hover img{transform:scale(1.05);}
+  .ftile .cap{position:absolute;left:0;right:0;bottom:0;padding:15px;color:#fff;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(20,14,10,.82));}
+  .ftile .cap .ft{font-size:9px;letter-spacing:.22em;color:#e2d3b6;text-transform:uppercase;}
+  .ftile .cap h4{font-size:15px;font-weight:600;letter-spacing:.05em;margin-top:4px;}
+  .ftile .cap .more{font-size:10px;color:var(--bronze);letter-spacing:.1em;margin-top:6px;display:inline-block;}
+
+  /* ===== 过往案例 (6 一排) ===== */
+  .past-row{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;}
+  .past{position:relative;overflow:hidden;border-radius:4px;min-height:170px;background:var(--ink);cursor:pointer;}
+  .past img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+  .past:hover img{transform:scale(1.06);}
+  .past .cap{position:absolute;left:0;right:0;bottom:0;padding:14px;color:#fff;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(20,14,10,.82));}
+  .past .cap .en{font-size:9px;letter-spacing:.2em;color:#e2d3b6;text-transform:uppercase;}
+  .past .cap h4{font-size:15px;font-weight:600;letter-spacing:.05em;margin-top:3px;}
+
+  /* ===== 细分案例 ===== */
+  .pf-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .pf{background:var(--white);border:1px solid var(--line2);padding:22px 24px;border-left:3px solid var(--brand);}
+  .pf .head{display:flex;align-items:baseline;gap:10px;margin-bottom:10px;}
+  .pf .head .lab{font-size:17px;font-weight:600;letter-spacing:.06em;}
+  .pf .head .en{font-size:10px;color:var(--brand);letter-spacing:.18em;text-transform:uppercase;}
+  .pf .body p{font-size:13px;color:var(--ink2);line-height:1.7;}
+  .pf .body ul{list-style:none;margin-top:12px;columns:2;column-gap:22px;}
+  .pf .body ul li{font-size:12px;color:var(--muted);padding-left:14px;position:relative;line-height:1.9;break-inside:avoid;}
+  .pf .body ul li::before{content:"—";position:absolute;left:0;color:var(--bronze);}
+
+  /* ===== 服务流程 ===== */
+  .proc{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .step{background:var(--white);border:1px solid var(--line2);overflow:hidden;}
+  .step .im{position:relative;height:150px;overflow:hidden;}
+  .step .im img{width:100%;height:100%;object-fit:cover;}
+  .step .im .n{position:absolute;left:14px;top:14px;width:34px;height:34px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;z-index:2;}
+  .step .im::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(20,14,10,.5));}
+  .step .body{padding:15px 20px 19px;}
+  .step h4{font-size:15px;font-weight:600;letter-spacing:.05em;}
+  .step p{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.6;}
+
+  /* ===== 资质联系 ===== */
+  .qual-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:start;}
+  .qual-card{background:var(--white);border:1px solid var(--line2);padding:26px;}
+  .qual-card h3{font-size:17px;font-weight:600;letter-spacing:.1em;margin-bottom:14px;}
+  .qual-card table{width:100%;border-collapse:collapse;}
+  .qual-card td{font-size:12.5px;padding:8px 4px;border-bottom:1px dashed var(--line);color:var(--ink2);}
+  .qual-card td:first-child{width:96px;color:var(--muted);font-weight:600;letter-spacing:.08em;}
+  .qual-card .note{font-size:11px;color:var(--muted);margin-top:12px;line-height:1.6;}
+  .contact-box{background:var(--ink);color:#fff;padding:28px;border-radius:4px;}
+  .contact-box .ct{font-size:10px;letter-spacing:.26em;color:var(--bronze);text-transform:uppercase;margin-bottom:18px;}
+  .contact-box .row{display:flex;align-items:baseline;gap:14px;padding:11px 0;border-top:1px solid rgba(255,255,255,.14);}
+  .contact-box .row .k{font-size:11px;color:#cbbfa6;width:62px;letter-spacing:.14em;flex:none;}
+  .contact-box .row .v{font-size:15px;letter-spacing:.04em;font-weight:500;}
+  .contact-box .row .v small{display:block;font-size:11px;color:#a79c86;margin-top:1px;font-weight:400;}
+  .foot{border-top:1px solid var(--line);padding:20px 0 30px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:11.5px;color:var(--muted);}
+  .foot .en{font-size:9px;letter-spacing:.24em;}
+
+  /* ===== Modal ===== */
+  .modal{position:fixed;inset:0;background:rgba(15,11,8,.88);z-index:100;display:none;align-items:center;justify-content:center;padding:4vh 3vw;}
+  .modal.open{display:flex;}
+  .modal-box{background:#fff;max-width:1080px;width:100%;max-height:92vh;overflow:hidden;border-radius:6px;display:flex;flex-direction:column;animation:pop .3s ease;}
+  @keyframes pop{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
+  .modal-head{padding:18px 26px;border-bottom:1px solid var(--line2);display:flex;align-items:baseline;gap:12px;flex:none;}
+  .modal-head .mt{font-size:10px;letter-spacing:.2em;color:var(--brand);text-transform:uppercase;}
+  .modal-head h3{font-size:20px;font-weight:700;letter-spacing:.05em;}
+  .modal-head .en{font-size:11px;color:var(--muted);letter-spacing:.1em;}
+  .modal-head .close{margin-left:auto;background:none;border:none;font-size:26px;color:var(--ink);cursor:pointer;line-height:1;}
+  .modal-gallery{position:relative;height:min(56vh,520px);background:#111;flex:none;}
+  .modal-gallery .mimgs{display:flex;height:100%;transition:transform .5s;}
+  .modal-gallery .mimgs img{flex:0 0 100%;height:100%;object-fit:contain;}
+  .modal-gallery .mnav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:40px;height:40px;border:none;border-radius:50%;background:rgba(255,255,255,.18);color:#fff;font-size:20px;cursor:pointer;}
+  .modal-gallery .mnav:hover{background:rgba(255,255,255,.35);}
+  .modal-gallery .mnav.prev{left:16px;}.modal-gallery .mnav.next{right:16px;}
+  .modal-gallery .mcount{position:absolute;right:18px;bottom:14px;z-index:3;color:#fff;font-size:12px;background:rgba(0,0,0,.5);padding:3px 10px;border-radius:100px;}
+  .modal-body{padding:18px 26px 24px;overflow:auto;}
+  .modal-body .desc{font-size:13.5px;color:var(--ink2);line-height:1.75;max-width:760px;}
+  .modal-body .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+  .modal-body .tags i{font-style:normal;font-size:11px;background:var(--paper);padding:4px 10px;border-radius:100px;color:var(--ink2);}
+
+  /* print */
+  @page{size:A4;margin:12mm;}
+  @media print{
+    body{background:#fff;font-size:11px;}
+    .sheet{padding:0;}
+    .hero{height:auto;min-height:0;overflow:hidden;}
+    .hero .slides{transform:none!important;display:block;}
+    .hero .slide{flex:none;height:360px;position:relative;page-break-inside:avoid;}
+    .hero .slide:nth-child(n+2){display:none;}
+    .hero .dots,.hero .arrow{display:none;}
+    section{page-break-after:always;padding:4mm 0;}
+    .modal{display:none!important;}
+    .about-grid,.feat-hero,.qual-grid{grid-template-columns:1fr 1fr;}
+    .svc-grid,.pf-grid,.proc{grid-template-columns:1fr 1fr;}
+    .feat-grid{grid-template-columns:repeat(3,1fr);}
+    .pillars-grid{grid-template-columns:1fr 1fr;}
+    .past-row{grid-template-columns:repeat(3,1fr);}
+    .cover{min-height:auto;}
+    .cover-main{padding:10mm 0 4mm;}
+    .hero{height:400px;}.hero .slide{height:400px;}
+  }
+  @media screen and (max-width:1020px){
+    .sheet{padding:0 20px;}
+    .cover-top,.cover-main,.cover-footer{padding-left:20px;padding-right:20px;}
+    .about-grid,.feat-hero,.qual-grid{grid-template-columns:1fr;}
+    .pillars-grid,.svc-grid,.feat-grid,.pf-grid,.proc{grid-template-columns:1fr 1fr;}
+    .past-row{grid-template-columns:repeat(3,1fr);}
+    .cover-services{grid-template-columns:1fr;}
+    .cover-services .sv{border-left:none;padding:10px 0;}
+    .hero h1{font-size:26px;}
+  }
+  @media screen and (max-width:640px){
+    .pillars-grid,.svc-grid,.feat-grid,.pf-grid,.proc,.past-row{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<!-- ===== 封面 + 轮播 ===== -->
+<section class="cover">
+  <div class="cover-top">
+    <div class="cover-brand">
+      <img class="logo" src="assets/logo.jpg" alt="庸禾LOGO">
+      <div>
+        <div class="bname">庸禾文化传媒</div>
+        <div class="ben">YONGHE ADVERTISING MEDIA</div>
+      </div>
+    </div>
+  </div>
+  <div class="cover-main">
+    <div class="hero">
+      <div class="slides" id="heroSlides">
+        <div class="slide"><img src="assets/car-dazehu.jpg" alt="大泽湖国际人才公园">
+          <div class="cap"><div class="htag">ENTRANCE SCULPTURE · LANDMARK</div><h1>大泽湖国际人才公园 · 入口雕塑</h1><p>从设计深化到工厂制作、现场安装的完整地标工程，塑造园区品牌形象与城市记忆点。</p></div></div>
+        <div class="slide"><img src="assets/car-haixiang.jpg" alt="大泽湖近自然湿地公园">
+          <div class="cap"><div class="htag">WAVE SCULPTURE · LANDSCAPE</div><h1>大泽湖近自然湿地公园 · 海浪雕塑</h1><p>蓝银色海浪雕塑与立体标识字，与自然湿地场景相融，成为公园标志性景观。</p></div></div>
+        <div class="slide"><img src="assets/car-ceremony.jpg" alt="中医附一封顶仪式">
+          <div class="cap"><div class="htag">PROJECT CEREMONY</div><h1>项目工程仪式 · 中医附一封顶</h1><p>工程封顶仪式的策划、场地布置与现场记录，见证项目关键节点的圆满落成。</p></div></div>
+        <div class="slide"><img src="assets/car-dangjian.jpg" alt="党建与文化陈展">
+          <div class="cap"><div class="htag">PARTY BUILDING · EXHIBITION</div><h1>党建与文化陈展</h1><p>红色文化长廊、党建阵地与展陈设计，塑造庄重而有教育意义的文化空间。</p></div></div>
+        <div class="slide"><img src="assets/car-laji.jpg" alt="垃圾分类宣传片">
+          <div class="cap"><div class="htag">PROMO VIDEO · SHORT VIDEO</div><h1>垃圾分类宣传片制作</h1><p>餐厨垃圾收运宣传片的策划、拍摄、剪辑与发布，以视听内容传播绿色理念。</p></div></div>
+        <div class="slide"><img src="assets/car-mtou.jpg" alt="门头招牌">
+          <div class="cap"><div class="htag">SIGNBOARD · F&amp;B CHAIN</div><h1>门头招牌 · 连锁餐饮</h1><p>以色彩、材质与结构唤醒品牌活力，打造城市商业门头的第一眼记忆。</p></div></div>
+        <div class="slide"><img src="assets/car-campus.jpg" alt="校园文化建设">
+          <div class="cap"><div class="htag">CAMPUS CULTURE</div><h1>校园文化建设 · 旧貌换新颜</h1><p>书法教室、文化长廊、户外空间等整体策划与落地，营造育人环境。</p></div></div>
+      </div>
+      <div class="dots" id="heroDots"></div>
+      <button class="arrow prev" onclick="heroMove(-1)">‹</button>
+      <button class="arrow next" onclick="heroMove(1)">›</button>
+    </div>
+    <div class="cover-slogan">
+      <div class="c1 serif">始终坚持为客户创造更大商业价值</div>
+      <div class="c2 en">ALWAYS ADHERING TO GREATER VALUE FOR CLIENTS</div>
+    </div>
+    <div class="cover-services">
+      <div class="sv"><i>Signboard</i><b>门头招牌</b></div>
+      <div class="sv"><i>Ceremony</i><b>项目仪式 · 活动布展</b></div>
+      <div class="sv"><i>Identity &amp; Wayfinding</i><b>标识导视 · 空间</b></div>
+      <div class="sv"><i>Print &amp; Media</i><b>广告装饰 · 印刷</b></div>
+      <div class="sv"><i>Event &amp; Video</i><b>活动策划 · 视频制作</b></div>
+      <div class="sv"><i>Turnkey Service</i><b>自有工厂 · 制作 · 安装 · 售后</b></div>
+    </div>
+  </div>
+  <div class="cover-footer">
+    <div class="fc">湖南省长沙市望城区月亮岛街道谷山钓鱼土鸡谷山森林公园内(北侧)</div>
+    <div class="fc">李先生 <b>137 5508 6578</b></div>
+    <div class="fc">袁先生 <b>138 7518 2268</b></div>
+    <div class="scroll en">SCROLL ↓</div>
+  </div>
+</section>
+
+<!-- ===== 01 公司简介 ===== -->
+<section id="about">
+  <div class="olabel"><span class="num">01</span><h2 class="serif">公司简介</h2><span class="ensub en">About the Company</span></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <h3 class="serif">湖南省庸禾文化传媒有限公司</h3>
+      <p>成立于 2008 年，是一家集<em>印务、广告宣传、品牌策划、企业文化建设及安装</em>于一体的综合性广告服务商。</p>
+      <p>公司拥有策划设计、生产制作、安装施工、业务客服四支专业团队，从创意到落地全程闭环，专注让每一个方案稳定呈现、高效交付。</p>
+      <p>以「诚信、创新、效率、匠心」为经营理念，以「用户至上、锐意进取」为企业精神，打造值得信赖的广告服务品牌。</p>
+      <div class="meta"><span>策划设计团队</span><span>生产制作团队</span><span>安装施工团队</span><span>业务客服团队</span></div>
+    </div>
+    <div class="about-media">
+      <div class="cur"><img id="aboutMain" src="assets/office.jpg" alt="办公环境"></div>
+      <div class="thumbs" id="aboutThumbs">
+        <img class="on" src="assets/office.jpg" data-src="assets/office.jpg" alt="办公">
+        <img src="assets/factory-01.jpg" data-src="assets/factory-01.jpg" alt="工厂">
+        <img src="assets/factory-02.jpg" data-src="assets/factory-02.jpg" alt="画册">
+        <img src="assets/factory-03.jpg" data-src="assets/factory-03.jpg" alt="生产">
+        <img src="assets/factory-04.jpg" data-src="assets/factory-04.jpg" alt="制作">
+        <img src="assets/factory-05.jpg" data-src="assets/factory-05.jpg" alt="车间">
+      </div>
+      <figcaption>办公协作空间 · 自有工厂生产制作实景</figcaption>
+    </div>
+  </div>
+  <div class="pillars">
+    <div class="phead"><h3 class="serif">四大特点</h3><span class="en">Four Features</span></div>
+    <div class="pillars-grid">
+      <div class="pillar"><div class="pn">01</div><h4>自有生产工厂</h4><p>拥有自建生产制作基地，物料源头自产，从源头把控材质与工艺。</p></div>
+      <div class="pillar"><div class="pn">02</div><h4>设计制作一体</h4><p>设计、出样、生产在同一体系内闭环，方案即所见，无需外包中转。</p></div>
+      <div class="pillar"><div class="pn">03</div><h4>全程品质把控</h4><p>自有车间全程质检，稳定出厂、优质落地，质量始终握在自己手中。</p></div>
+      <div class="pillar"><div class="pn">04</div><h4>快速响应交付</h4><p>就近生产、周期可控，急单加急响应，让交付更快更稳妥。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 02 业务能力 ===== -->
+<section id="services">
+  <div class="olabel"><span class="num">02</span><h2 class="serif">业务能力</h2><span class="ensub en">Services &amp; Capabilities</span></div>
+  <div class="svc-grid">
+    <div class="svc"><div class="im"><img src="assets/car-mtou.jpg" alt="门头招牌"><span class="sno">/ 01</span></div>
+      <div class="body"><h4>门头招牌</h4><div class="sen en">Signboard</div><div class="bd"></div>
+      <p>门头设计、招牌制作与安装一体，覆盖多种材质与工艺，塑造品牌第一眼印象。</p>
+      <div class="tags"><i>发光字</i><i>拉布灯箱</i><i>吸塑灯箱</i><i>软膜</i><i>铝扣板</i><i>雕花铝板</i></div></div></div>
+    <div class="svc"><div class="im"><img src="assets/svc-ceremony.jpg" alt="项目仪式"><span class="sno">/ 02</span></div>
+      <div class="body"><h4>项目仪式</h4><div class="sen en">Project Ceremony</div><div class="bd"></div>
+      <p>开工奠基、封顶竣工、开业庆典等仪式活动的策划、场地布置与执行记录。</p>
+      <div class="tags"><i>开工奠基</i><i>封顶竣工</i><i>开业庆典</i><i>揭牌仪式</i><i>场地布置</i><i>影像记录</i></div></div></div>
+    <div class="svc"><div class="im"><img src="assets/svc-print.jpg" alt="广告装饰印刷"><span class="sno">/ 03</span></div>
+      <div class="body"><h4>广告装饰 · 印刷</h4><div class="sen en">Decoration &amp; Print</div><div class="bd"></div>
+      <p>画册、折页、DM单、展架、写真裱板及包装礼品的全案设计与印刷制作。</p>
+      <div class="tags"><i>画册</i><i>折页</i><i>写真</i><i>展架</i><i>包装</i><i>礼品袋</i></div></div></div>
+    <div class="svc"><div class="im"><img src="assets/cat-wayfinding.jpg" alt="标识标牌"><span class="sno">/ 04</span></div>
+      <div class="body"><h4>标识标牌</h4><div class="sen en">Signage &amp; Wayfinding</div><div class="bd"></div>
+      <p>户外不锈钢立牌、铝板烤漆导牌及室内科室牌、楼层索引等系统化标识制作。</p>
+      <div class="tags"><i>户外立牌</i><i>铝板导牌</i><i>科室牌</i><i>楼层索引</i></div></div></div>
+    <div class="svc"><div class="im"><img src="assets/cat-led.jpg" alt="LED显示亮化"><span class="sno">/ 05</span></div>
+      <div class="body"><h4>LED 显示 &amp; 亮化工程</h4><div class="sen en">LED &amp; Lighting</div><div class="bd"></div>
+      <p>LED显示屏与楼体、景观亮化工程，涵盖广告媒体、安防监控、舞台背景等场景。</p>
+      <div class="tags"><i>广告媒体</i><i>安防监控</i><i>舞台背景</i><i>楼体亮化</i><i>景观亮化</i></div></div></div>
+    <div class="svc"><div class="im"><img src="assets/cat-event.jpg" alt="活动策划视频制作"><span class="sno">/ 06</span></div>
+      <div class="body"><h4>活动策划 · 视频制作</h4><div class="sen en">Event &amp; Video Production</div><div class="bd"></div>
+      <p>发布会、音乐节、市集等线下布展策划，以及短视频、宣传片的策划、拍摄与剪辑。</p>
+      <div class="tags"><i>活动布展</i><i>发布会</i><i>音乐节</i><i>短视频</i><i>宣传片</i></div></div></div>
+  </div>
+</section>
+
+<!-- ===== 03 优秀案例 ===== -->
+<section id="featured">
+  <div class="olabel"><span class="num">03</span><h2 class="serif">优秀案例</h2><span class="ensub en">Featured Projects · 点击查看项目详情</span></div>
+  <div class="feat-hero">
+    <div class="fcard" data-project="dzhpark">
+      <img src="assets/dzhpark-cover.jpg" alt="大泽湖国际人才公园入口雕塑">
+      <div class="cap"><div class="ft">Entrance Sculpture · Landmark</div><h4>大泽湖国际人才公园 · 入口雕塑</h4><p>从设计深化、工厂制作到现场安装的完整地标工程，塑造园区品牌形象与城市记忆点。</p><span class="more">查看项目详情 →</span></div>
+    </div>
+    <div class="fcard" data-project="haixiang">
+      <img src="assets/haixiang-cover.jpg" alt="大泽湖近自然湿地公园海浪雕塑">
+      <div class="cap"><div class="ft">Wave Sculpture · Landscape</div><h4>大泽湖近自然湿地公园 · 海浪雕塑</h4><p>蓝银色海浪雕塑与立体标识字，与自然湿地场景相融，成为公园标志性景观。</p><span class="more">查看项目详情 →</span></div>
+    </div>
+  </div>
+  <div class="feat-grid">
+    <div class="ftile" data-project="ceremony">
+      <img src="assets/ceremony-cover.jpg" alt="中医附一封顶仪式"><div class="cap"><div class="ft">Project Ceremony</div><h4>项目工程仪式 · 中医附一封顶</h4><span class="more">查看 →</span></div>
+    </div>
+    <div class="ftile" data-project="yuanxiao">
+      <img src="assets/yuanxiao-cover.jpg" alt="大泽湖元宵视频制作"><div class="cap"><div class="ft">Promo Video</div><h4>大泽湖元宵视频制作</h4><span class="more">查看 →</span></div>
+    </div>
+    <div class="ftile" data-project="fazhi">
+      <img src="assets/fazhi-cover.jpg" alt="董家垱小学法治长廊建设"><div class="cap"><div class="ft">Campus Law Corridor</div><h4>董家垱小学法治长廊建设</h4><span class="more">查看 →</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 过往案例 (6 一排) ===== -->
+<section id="past">
+  <div class="olabel"><span class="num">04</span><h2 class="serif">过往案例</h2><span class="ensub en">Past Projects by Category</span></div>
+  <div class="past-row">
+    <div class="past" data-project="p-biaoshi"><img src="assets/past-biaoshi.jpg" alt="标识标牌"><div class="cap"><div class="en">Signage</div><h4>标识标牌</h4></div></div>
+    <div class="past" data-project="p-dangjian"><img src="assets/past-dangjian.jpg" alt="党建与文化陈展"><div class="cap"><div class="en">Party Building</div><h4>党建与文化陈展</h4></div></div>
+    <div class="past" data-project="p-gongcheng"><img src="assets/past-gongcheng.jpg" alt="工程仪式"><div class="cap"><div class="en">Ceremony</div><h4>工程仪式</h4></div></div>
+    <div class="past" data-project="p-huodong"><img src="assets/past-huodong.jpg" alt="活动展会"><div class="cap"><div class="en">Event</div><h4>活动展会</h4></div></div>
+    <div class="past" data-project="p-mtou"><img src="assets/past-mtou.jpg" alt="门头招牌"><div class="cap"><div class="en">Signboard</div><h4>门头招牌</h4></div></div>
+    <div class="past" data-project="p-xiaoyuan"><img src="assets/past-xiaoyuan.jpg" alt="校园文化建设"><div class="cap"><div class="en">Campus</div><h4>校园文化建设</h4></div></div>
+  </div>
+</section>
+
+<!-- ===== 05 细分案例 ===== -->
+<section id="portfolio">
+  <div class="olabel"><span class="num">05</span><h2 class="serif">项目类别</h2><span class="ensub en">Project Category</span></div>
+  <div class="pf-grid">
+    <div class="pf">
+      <div class="head"><span class="lab">导视系统</span><span class="en">Wayfinding</span></div>
+      <div class="body"><p>系统化的标识导视设计，整合品牌形象、建筑景观与信息功能，兼具引导、说明、指示作用，是环境布局与文化塑造的重要环节。</p>
+        <ul><li>园区 / 商场楼层导视</li><li>户外立牌 · 指引牌</li><li>停车场 · 电梯厅导视</li><li>景区总览 · 区域导览</li><li>校园 / 公园立地导视</li><li>运动步道标识</li></ul></div>
+    </div>
+    <div class="pf">
+      <div class="head"><span class="lab">项目仪式 · 布展</span><span class="en">Ceremony &amp; Event</span></div>
+      <div class="body"><p>承接开工奠基、封顶竣工、开业庆典等仪式活动，以及发布会、音乐节等线下布展，帮助企业塑造形象、提升知名度。</p>
+        <ul><li>开工奠基 · 封顶</li><li>开业 · 揭牌庆典</li><li>发布会 · 峰会</li><li>音乐节 · 市集</li><li>舞台背景设计</li><li>奠基 · 开工仪式</li></ul></div>
+    </div>
+    <div class="pf">
+      <div class="head"><span class="lab">亮化工程</span><span class="en">Lighting</span></div>
+      <div class="body"><p>对城市建筑、景区与公共空间进行照明与装饰，美化环境、提升安全性与辨识度，突出建筑特色，营造独特夜景。</p>
+        <ul><li>楼体 · 地标亮化</li><li>栈道 · 景观步道</li><li>广场景观亮化</li><li>公园 · 街区夜景</li><li>节日氛围照明</li><li>商业街灯饰</li></ul></div>
+    </div>
+    <div class="pf">
+      <div class="head"><span class="lab">LED 显示屏</span><span class="en">LED Display</span></div>
+      <div class="body"><p>室内外 LED 屏与科技展陈空间，支持图文、视频、互动等多种展示，是城市文化与商业媒体传播的重要载体。</p>
+        <ul><li>科技展馆 · 立柱屏</li><li>户外大型电子屏</li><li>楼体广告媒体</li><li>展厅环形屏 · 穹顶屏</li><li>舞台背景屏</li><li>安防监控拼接屏</li></ul></div>
+    </div>
+    <div class="pf">
+      <div class="head"><span class="lab">视频制作</span><span class="en">Video Production</span></div>
+      <div class="body"><p>「策划—拍摄—剪辑—发布」一体化视听内容，统一品牌调性，适配抖音、视频号、小红书等平台，低成本高效传播。</p>
+        <ul><li>品牌宣传片</li><li>公益 · 科普宣传片</li><li>实景 · 工厂实拍</li><li>项目案例记录</li><li>多平台投放运营</li><li>航拍 · 无人机拍摄</li></ul></div>
+    </div>
+    <div class="pf">
+      <div class="head"><span class="lab">空间与雕塑</span><span class="en">Space &amp; Sculpture</span></div>
+      <div class="body"><p>文化展陈、景观设计与雕塑装置，承载地域文脉与城市精神，美化空间、塑造地标，为城市赋予温度与文化记忆。</p>
+        <ul><li>文化长廊 · 展板</li><li>校园文化墙</li><li>党建 · 廉政展陈</li><li>景观雕塑 · 装置</li><li>精神堡垒 · 地标</li><li>休闲景观设计</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 06 服务流程 ===== -->
+<section id="process">
+  <div class="olabel"><span class="num">06</span><h2 class="serif">服务流程</h2><span class="ensub en">Service Process</span></div>
+  <div class="proc">
+    <div class="step"><div class="im"><span class="n">1</span><img src="assets/proc-consult.jpg" alt="了解需求"></div>
+      <div class="body"><h4>了解需求</h4><p>业务员与客户充分沟通，确定需求与要求，明确目标与方向。</p></div></div>
+    <div class="step"><div class="im"><span class="n">2</span><img src="assets/proc-design.jpg" alt="设计报价"></div>
+      <div class="body"><h4>设计报价</h4><p>设计师输出效果图与小样，同步预算与报价方案，供客户确认。</p></div></div>
+    <div class="step"><div class="im"><span class="n">3</span><img src="assets/proc-contract.jpg" alt="签订合同"></div>
+      <div class="body"><h4>签订合同</h4><p>拟定正式合同，客户确认签订并支付预付款，明确交付标准。</p></div></div>
+    <div class="step"><div class="im"><span class="n">4</span><img src="assets/factory-03.jpg" alt="制作生产"></div>
+      <div class="body"><h4>制作生产</h4><p>自有工厂按设计稿精工制造，全程品质管控，专人跟进生产进度。</p></div></div>
+    <div class="step"><div class="im"><span class="n">5</span><img src="assets/dzh_06.jpg" alt="安装验收"></div>
+      <div class="body"><h4>安装验收</h4><p>制定现场安全与安装计划，自有施工团队安装，完工客户验收。</p></div></div>
+    <div class="step"><div class="im"><span class="n">6</span><img src="assets/proc-service.jpg" alt="启动售后"></div>
+      <div class="body"><h4>启动售后</h4><p>自有团队售后无忧，持续响应维护与整改，贴心服务始终在线。</p></div></div>
+  </div>
+</section>
+
+<!-- ===== 07 资质与联系 ===== -->
+<section id="qual">
+  <div class="olabel"><span class="num">07</span><h2 class="serif">资质与联系</h2><span class="ensub en">Qualification &amp; Contact</span></div>
+  <div class="qual-grid">
+    <div class="qual-card">
+      <h3 class="serif">公司资质</h3>
+      <table>
+        <tr><td>统一社会信用代码</td><td>91430104MA4T88RE23</td></tr>
+        <tr><td>企业名称</td><td>湖南省庸禾文化传媒有限公司</td></tr>
+        <tr><td>企业类型</td><td>有限责任公司（自然人投资或控股）</td></tr>
+        <tr><td>注册资本</td><td>伍佰万元整</td></tr>
+        <tr><td>成立日期</td><td>2021 年 04 月 08 日</td></tr>
+        <tr><td>经营范围</td><td>广告制作、品牌策划、标识灯箱、亮化工程、活动策划、视频制作等</td></tr>
+      </table>
+      <div class="note">以上信息来源于企业营业执照登记信息，用于宣传展示。</div>
+    </div>
+    <div class="contact-box">
+      <div class="ct en">Contact Us</div>
+      <div class="row"><span class="k">业务洽谈</span><span class="v">李先生 <small>137 5508 6578</small></span></div>
+      <div class="row"><span class="k">业务洽谈</span><span class="v">袁先生 <small>138 7518 2268</small></span></div>
+      <div class="row"><span class="k">公司地址</span><span class="v">湖南省长沙市望城区月亮岛街道谷山钓鱼土鸡谷山森林公园内(北侧)</span></div>
+    </div>
+  </div>
+  <div class="foot">
+    <div>© 2026 湖南省庸禾文化传媒有限公司</div>
+    <div class="en">YOHE ADVERTISING MEDIA · 庸禾文化传媒</div>
+  </div>
+</section>
+
+</div>
+
+<!-- ===== Modal ===== -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <span class="mt" id="mTag">PROJECT</span>
+      <h3 id="mTitle"></h3>
+      <span class="en" id="mEn"></span>
+      <button class="close" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-gallery">
+      <div class="mimgs" id="mImgs"></div>
+      <span class="mcount" id="mCount"></span>
+      <button class="mnav prev" onclick="mNav(-1)">‹</button>
+      <button class="mnav next" onclick="mNav(1)">›</button>
+    </div>
+    <div class="modal-body">
+      <p class="desc" id="mDesc"></p>
+      <div class="tags" id="mTags"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== 轮播 ===== */
+const slides = document.getElementById('heroSlides');
+const dotsBox = document.getElementById('heroDots');
+const total = slides.children.length;
+let cur = 0, timer;
+for (let i = 0; i < total; i++) {
+  const s = document.createElement('span');
+  s.addEventListener('click', () => go(i));
+  dotsBox.appendChild(s);
+}
+const dots = dotsBox.children;
+function go(i){ cur = (i + total) % total; slides.style.transform = 'translateX(-' + (cur*100) + '%)'; for (let j=0;j<total;j++) dots[j].classList.toggle('on', j===cur); }
+function heroMove(d){ go(cur + d); }
+go(0);
+function auto(){ timer = setInterval(() => heroMove(1), 4200); }
+auto();
+document.getElementById('heroDots').addEventListener('mouseenter', () => clearInterval(timer));
+document.getElementById('heroDots').addEventListener('mouseleave', auto);
+
+/* ===== 简介工厂轮播 ===== */
+const thumbs = document.querySelectorAll('#aboutThumbs img');
+const aboutMain = document.getElementById('aboutMain');
+thumbs.forEach(t => t.addEventListener('click', () => {
+  aboutMain.src = t.dataset.src;
+  thumbs.forEach(x => x.classList.remove('on'));
+  t.classList.add('on');
+}));
+
+/* ===== 项目数据 ===== */
+const P = {
+  dzhpark:{ t:'大泽湖国际人才公园 · 入口雕塑', en:'DAZE LAKE INTERNATIONAL TALENT PARK', tag:'入口雕塑 · 城市地标',
+    desc:'长沙·大泽湖国际人才公园入口雕塑工程，历经土方开挖、基础施工、立体标识字与石材基座安装到整体落地的全过程。大型标识地标为园区塑造品牌形象、建立视觉记忆点，是庸禾从设计到制作安装一站式交付的标杆项目。',
+    imgs:['assets/dzhpark-cover.jpg','assets/dzhpark-01.jpg','assets/dzhpark-02.jpg','assets/dzhpark-03.jpg','assets/dzhpark-04.jpg','assets/dzhpark-05.jpg','assets/dzhpark-06.jpg','assets/dzhpark-07.jpg','assets/dzhpark-08.jpg','assets/dzhpark-09.jpg'],
+    tags:['入口雕塑','大型地标','设计深化','工厂制作','现场安装'], video:null },
+  haixiang:{ t:'大泽湖近自然湿地公园 · 海浪雕塑', en:'DAZE LAKE WETLAND PARK', tag:'海浪雕塑 · 景观地标',
+    desc:'大泽湖近自然湿地公园海浪雕塑与标识系统设计，以蓝银色海浪造型配合立体字，与镜面水景和自然湿地场景相融，成为公园的标志性景观。',
+    imgs:['assets/haixiang-cover.jpg','assets/haixiang-01.jpg','assets/haixiang-02.jpg','assets/haixiang-03.jpg','assets/haixiang-04.jpg'],
+    tags:['海浪雕塑','景观地标','标识系统','湿地公园'], video:null },
+  ceremony:{ t:'项目工程仪式 · 中医附一封顶', en:'PROJECT CEREMONY', tag:'工程仪式 · 现场记录',
+    desc:'中医附一医院项目封顶仪式的策划、场地布置与全程影像记录，红色主背景与启动柱营造庄重氛围，见证工程关键节点的圆满落成。',
+    imgs:['assets/ceremony-cover.jpg','assets/ceremony-01.jpg','assets/ceremony-02.jpg','assets/ceremony-03.jpg','assets/ceremony-04.jpg','assets/ceremony-05.jpg','assets/ceremony-06.jpg'],
+    tags:['封顶仪式','场地布置','仪式策划','影像记录'], video:null },
+  yuanxiao:{ t:'大泽湖元宵视频制作', en:'DAZE LAKE YUANXIAO VIDEO', tag:'视频制作 · 宣传片',
+    desc:'大泽湖元宵主题视频的策划、实景拍摄、剪辑与发布，以画面、文案与配乐统一品牌调性，多平台投放传播。',
+    imgs:['assets/yuanxiao-cover.jpg','assets/yuanxiao-01.jpg','assets/yuanxiao-02.jpg','assets/yuanxiao-03.jpg','assets/yuanxiao-04.jpg'],
+    tags:['视频制作','宣传片','实景拍摄','多平台投放'], video:null },
+  fazhi:{ t:'董家垱小学法治长廊建设', en:'DONGJIADANG PRIMARY LAW CORRIDOR', tag:'校园文化 · 法治展陈',
+    desc:'董家垱小学法治长廊从方案设计到现场落地的整体建设，以展板、图文与空间布局传播法治知识，营造知法、学法的育人环境。',
+    imgs:['assets/fazhi-cover.jpg','assets/fazhi-01.jpg','assets/fazhi-02.jpg','assets/fazhi-03.jpg','assets/fazhi-04.jpg','assets/fazhi-05.jpg','assets/fazhi-06.jpg'],
+    tags:['法治长廊','校园文化','展陈设计','方案落地'], video:null },
+  laji:{ t:'垃圾分类宣传片制作', en:'GARBAGE SORTING PROMO', tag:'公益宣传 · 视频制作',
+    desc:'垃圾分类（餐厨垃圾收运）主题宣传片的策划、实景拍摄与剪辑发布，以展板实景与科普画面传播绿色环保理念，塑造专业社会形象。',
+    imgs:['assets/laji-cover.jpg','assets/laji-01.jpg'],
+    tags:['公益宣传','宣传片','餐厨垃圾','科普传播'], video:null },
+  'p-biaoshi':{ t:'过往案例 · 标识标牌', en:'SIGNAGE', tag:'标识标牌',
+    desc:'户外立牌、铝板导牌、楼层索引、科室牌等系统化标识标牌制作案例，规范环境指引、强化空间识别。',
+    imgs:['assets/past-biaoshi.jpg','assets/past-biaoshi-01.jpg','assets/past-biaoshi-02.jpg','assets/past-biaoshi-03.jpg','assets/past-biaoshi-04.jpg'],
+    tags:['户外立牌','楼层索引','科室牌','导视'], video:null },
+  'p-dangjian':{ t:'过往案例 · 党建与文化陈展', en:'PARTY BUILDING', tag:'党建展陈',
+    desc:'红色文化长廊、党建阵地与展陈设计，塑造庄重而有教育意义的文化空间。',
+    imgs:['assets/past-dangjian.jpg','assets/past-dangjian-01.jpg','assets/past-dangjian-02.jpg','assets/past-dangjian-03.jpg','assets/past-dangjian-04.jpg'],
+    tags:['党建文化','红色展陈','廉政阵地','文化长廊'], video:null },
+  'p-gongcheng':{ t:'过往案例 · 工程仪式', en:'PROJECT CEREMONY', tag:'工程仪式',
+    desc:'工程开工、奠基、封顶等仪式活动的策划与现场记录，见证项目关键节点。',
+    imgs:['assets/past-gongcheng.jpg','assets/past-gongcheng-01.jpg','assets/past-gongcheng-02.jpg','assets/past-gongcheng-03.jpg','assets/past-gongcheng-04.jpg'],
+    tags:['开工奠基','封顶','仪式策划','现场记录'], video:null },
+  'p-huodong':{ t:'过往案例 · 活动展会', en:'EVENT', tag:'活动展会',
+    desc:'发布会、音乐节、市集等线下活动与展会布展，帮助企业塑造品牌形象、提升知名度。',
+    imgs:['assets/past-huodong.jpg','assets/past-huodong-01.jpg','assets/past-huodong-02.jpg','assets/past-huodong-03.jpg','assets/past-huodong-04.jpg'],
+    tags:['活动布展','发布会','音乐节','市集'], video:null },
+  'p-mtou':{ t:'过往案例 · 门头招牌', en:'SIGNBOARD', tag:'门头招牌',
+    desc:'连锁餐饮等品牌门店门头设计与制作，覆盖多种业态，塑造品牌第一眼记忆。',
+    imgs:['assets/past-mtou.jpg','assets/past-mtou-01.jpg','assets/past-mtou-02.jpg','assets/past-mtou-03.jpg','assets/past-mtou-04.jpg'],
+    tags:['餐饮门头','品牌视觉','招牌制作'], video:null },
+  'p-xiaoyuan':{ t:'过往案例 · 校园文化建设', en:'CAMPUS', tag:'校园文化',
+    desc:'中小学校园文化整体策划与落地，涵盖教室、文化墙、户外空间等，实现旧貌换新颜。',
+    imgs:['assets/past-xiaoyuan.jpg','assets/past-xiaoyuan-01.jpg','assets/past-xiaoyuan-02.jpg','assets/past-xiaoyuan-03.jpg','assets/past-xiaoyuan-04.jpg'],
+    tags:['校园文化','空间设计','文化墙','旧貌换新颜'], video:null }
+};
+
+/* ===== Modal ===== */
+const modal = document.getElementById('modal');
+const mImgs = document.getElementById('mImgs');
+let mIdx = 0, mImgsData = [];
+
+function openModal(key){
+  const p = P[key]; if(!p) return;
+  mIdx = 0; mImgsData = p.imgs;
+  document.getElementById('mTitle').textContent = p.t;
+  document.getElementById('mEn').textContent = p.en;
+  document.getElementById('mTag').textContent = p.tag;
+  document.getElementById('mDesc').textContent = p.desc;
+  document.getElementById('mTags').innerHTML = p.tags.map(t => '<i>' + t + '</i>').join('');
+  renderGallery();
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function renderGallery(){
+  mImgs.innerHTML = '';
+  mImgsData.forEach(s => {
+    const im = document.createElement('img');
+    im.src = s; im.alt = '';
+    mImgs.appendChild(im);
+  });
+  mImgs.style.transform = 'translateX(-' + (mIdx * 100) + '%)';
+  document.getElementById('mCount').textContent = (mIdx + 1) + ' / ' + mImgsData.length;
+}
+function mNav(d){
+  mIdx = (mIdx + d + mImgsData.length) % mImgsData.length;
+  renderGallery();
+}
+function closeModal(){ modal.classList.remove('open'); document.body.style.overflow = ''; }
+document.querySelectorAll('.fcard, .ftile, .past').forEach(el => el.addEventListener('click', () => openModal(el.dataset.project)));
+modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
